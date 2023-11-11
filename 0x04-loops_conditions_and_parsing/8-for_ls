@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Looping through ls
+
+list=$(ls)
+for i in $list
+do
+    echo "$i" | cut -d'-' -f 2
+done
+

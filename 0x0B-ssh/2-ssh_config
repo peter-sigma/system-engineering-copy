@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# ssh configuration for the client
+
+host	*
+	PasswordAuthentication no
+	SendEnv LANG LC_*
+	HashKnownHosts yes
+	GSSAPIAuthentication yes
+	GSSAPIDelegateCredentials no
+
+Host 54.237.67.187
+    IdentityFile ~/.ssh/holberton
+    Protocol 2

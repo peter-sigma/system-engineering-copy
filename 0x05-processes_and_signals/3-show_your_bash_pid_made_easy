@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#a function to simplify bash pid
+pgrep -l bash

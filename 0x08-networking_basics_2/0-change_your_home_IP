@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#Configuring server to match localhost and facebook
+
+if [[ $EUID -ne 0 ]]; then
+	echo "Run the script as root."
+	exit 1
+fi
+
+#Defining the host file path
+host_file="/etc/hosts"
+
+#Defining the domain and IP mappings
+mappings=(
+	"127.0.0.2 localhost"
+	"8.8.8.8 facebook.com"
+)
+
+# Adding mappings to the /etc/hosts file
+
+for mapping in "${mappings[@]}"; do
+    echo "$mapping" >> "$host_file"
+done

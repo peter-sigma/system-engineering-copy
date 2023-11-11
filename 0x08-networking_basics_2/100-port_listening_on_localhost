@@ -1,0 +1,11 @@
+#!/bin/env bash
+
+#Getting network interface information, filter for IPv4 addresses, and extract using cut
+ipv4_addresses=$(ifconfig | grep 'inet ' | cut -d ' ' -f 10)
+
+#Getting additional IPv4 addresses from localhost
+local_ipv4=$(telnet localhost 23 2>/dev/null | grep 'Connected to' | cut -d ' ' -f 5)
+local_ipv4_nc=$(nc -z -w 1 localhost 23 2>/dev/null && echo "127.0.0.1")
+
+# Printing active IPV4
+echo "$ipv4_addresses $local_ipv4 $local_ipv4_nc"

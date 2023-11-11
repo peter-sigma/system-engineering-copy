@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#printing to infinity
+function print_message()
+{
+	while true; do
+        	echo "To infinity and beyond"
+		sleep 2
+	done
+}
+print_message

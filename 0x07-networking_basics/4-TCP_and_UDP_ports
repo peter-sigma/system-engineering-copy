@@ -1,0 +1,17 @@
+#!/bin/env bash
+#showing active servers
+echo "Active Internet connections (only servers)"
+
+# Run `ss` command to get listening sockets with process information
+netstat -tuln | awk '/LISTEN/
+{
+	split($6, a, ":");
+	port = a[length(a)];
+	cmd = "lsof -i :" port " | awk '\''NR==2 {print $2,$1}'\''";
+	cmd | getline result;
+	close(cmd);
+	split(result, a);
+	pid = a[1];
+	pname = a[2];
+	print "PID:", pid, "Program Name:", pname, "Port:", port;
+}'

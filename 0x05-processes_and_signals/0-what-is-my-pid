@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# a script to get the pid of the running process
+echo $$
